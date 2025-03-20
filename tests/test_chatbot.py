@@ -20,6 +20,7 @@ from src.chatbot import ACCOUNTS, VALID_TASKS
 # Importing functions to be tested
 from src.chatbot import get_account_number
 from src.chatbot import get_amount
+from src.chatbot import get_balance
 
 class TestReverseString(unittest.TestCase):
     # TESTING get_account
@@ -108,6 +109,35 @@ class TestReverseString(unittest.TestCase):
             # Assert
             self.assertEqual(expected, actual)
     # TESTING get_balance
+    # Testing for non numeric parameter
+    def test_get_balance_non_numeric(self):
+        # Arrange
+        acc_num = "Presley"
+        expected = "Account number must be an int type."
+        # Act and Assert
+        with self.assertRaises(TypeError) as context:
+            get_balance(acc_num)
+            
+        self.assertEqual(str(context.exception), expected)
+    # Testing for non account number
+    def test_get_balance_not_account(self):
+        # Arrange
+        acc_num = 222222
+        expected = "Account number does not exist."
+        # Act and Assert
+        with self.assertRaises(ValueError) as context:
+            get_balance(acc_num)
+        
+        self.assertEqual(str(context.exception), expected)
+    # Testing for valid account number
+    def test_get_balance_valid_input(self):
+        # Arrange
+        acc_num = 123456
+        expected = "Your current balance for account 123456 is $1,000.00"
+        # Act
+        actual = get_balance(acc_num)
+        # Assert
+        self.assertEqual(expected, actual)
                          
 
 if __name__ == "__main__":

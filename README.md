@@ -29,3 +29,7 @@ Presley McFarlane-Goolcharan
 
 - Added balance validation to "get_balance()" function.
 
+## Code Modification [6]
+
+- Added unit testing for function "get_balance()" function.
+
