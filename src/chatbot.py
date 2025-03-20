@@ -37,26 +37,15 @@ def get_account_number() -> int:
         ValueError: Raised if the account number entered does not exist in the "ACCOUNTS" dictionary.
 
     """
-    try:
-            acc_num = input(f"Please enter your account number: ")
-            try:
-                    iter = int(acc_num)
-            except ValueError:
-                    raise TypeError("Account must be a whole number.")
-            
-            if iter in ACCOUNTS:
-                result = print(iter)
-            else:
-                raise ValueError("Account number entered does not exist.")
-    except TypeError as e:
-            result = print(e)
-    except ValueError as e:
-            result = print(e)
-         
+    acc_num = input("Please enter your account number: ")
+    try: 
+            acc_num = int(acc_num)
+    except ValueError:
+            raise TypeError("Account number must be a whole number.")
+    if acc_num not in ACCOUNTS:
+        raise ValueError("Account number entered does not exist.")
     
-    return result
-
-get_account_number()
+    return acc_num
     
 """
 def chatbot():
