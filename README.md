@@ -11,3 +11,16 @@ Presley McFarlane-Goolcharan
 ## Code Modification [1]
 
 - Added account number validation to "get_account_number()" function.
+
+## Code Modification [2]
+
+- Fixed "get_account_number" function so it does not print to console, it returns just the "acc_num" variable and it does not trigger input when testing the itself.
+- Added unit testing for function "get_account_number".
+
+## Code Modification [3]
+
+- Added deposit validation to "get_amount()" function.
+
+## Code Modification [4]
+
+- Added unit testing for function "get_amount()".

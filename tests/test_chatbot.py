@@ -19,8 +19,10 @@ from unittest.mock import patch
 from src.chatbot import ACCOUNTS, VALID_TASKS
 # Importing functions to be tested
 from src.chatbot import get_account_number
+from src.chatbot import get_amount
 
 class TestReverseString(unittest.TestCase):
+    # TESTING get_account
     # Testing for non integer datatype
     def test_get_account_number_value_error_not_whole_number(self):
     
@@ -57,5 +59,53 @@ class TestReverseString(unittest.TestCase):
 
             # Assert
             self.assertEqual(expected, actual)
+    # TESTING get_amount
+    # Testing for non-numeric input
+    def test_get_amount_value_error_not_numeric(self):
 
+        with patch('builtins.input') as mock_input:
+            # Arrange
+            mock_input.side_effect = ["Presley"]
+            expected = "Amount must be a numeric type."
+            # Act and Assert
+            with self.assertRaises(ValueError) as context:
+                get_amount()
+            
+            self.assertEqual(str(context.exception), expected)
+    # Testing for input = 0
+    def test_get_amount_value_error_input_zero(self):
 
+        with patch('builtins.input') as mock_input:
+            # Arrange
+            mock_input.side_effect = ["0"]
+            expected = "Amount must be a value greater than zero."
+            # Act and Assert
+            with self.assertRaises(ValueError) as context:
+                get_amount()
+
+            self.assertEqual(str(context.exception), expected)
+    def test_get_amount_value_error_input_negative(self):
+
+        with patch('builtins.input') as mock_input:
+            # Arrange
+            mock_input.side_effect = ["-1"]
+            expected = "Amount must be a value greater than zero."
+            # Act and Assert
+            with self.assertRaises(ValueError) as context:
+                get_amount()
+            
+            self.assertEqual(str(context.exception), expected)
+    def test_get_amount_valid_input(self):
+
+        with patch('builtins.input') as mock_input:
+            # Arrange
+            mock_input.side_effect = ["2000"]
+            expected = 2000
+            # Act
+            actual = get_amount()
+            # Assert
+            self.assertEqual(expected, actual)
+                         
+
+if __name__ == "__main__":
+    unittest.main()
