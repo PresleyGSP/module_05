@@ -84,6 +84,7 @@ class TestReverseString(unittest.TestCase):
                 get_amount()
 
             self.assertEqual(str(context.exception), expected)
+    # Testing for negative input
     def test_get_amount_value_error_input_negative(self):
 
         with patch('builtins.input') as mock_input:
@@ -95,6 +96,7 @@ class TestReverseString(unittest.TestCase):
                 get_amount()
             
             self.assertEqual(str(context.exception), expected)
+    # Testing for valid input
     def test_get_amount_valid_input(self):
 
         with patch('builtins.input') as mock_input:
@@ -105,6 +107,7 @@ class TestReverseString(unittest.TestCase):
             actual = get_amount()
             # Assert
             self.assertEqual(expected, actual)
+    # TESTING get_balance
                          
 
 if __name__ == "__main__":

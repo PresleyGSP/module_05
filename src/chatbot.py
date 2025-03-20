@@ -70,6 +70,28 @@ def get_amount() -> float:
         raise ValueError("Amount must be a value greater than zero.")
     
     return dep_num
+
+def get_balance(acc_num: int) -> str:
+    """Returns a message containing the balance of the specified account number
+    
+    Returns
+        str: " Your current balance for account {account-number} is {balance-formatted-as-currency}."
+    
+    Raises:
+        TypeError: Raised if value of the parameter is not an integer type.
+        ValueError: Raised if the specified account number does not exist in the ACCOUNTS dictionary.
+    """
+    try:
+            acc_num = int(acc_num)
+    except ValueError:
+          raise TypeError('Account number must be an int type.')
+    if acc_num not in ACCOUNTS:
+          raise ValueError('Account number does not exist.')
+    balance = ACCOUNTS[acc_num]["balance"]
+    
+    return (f"Your current balance for account {acc_num} is ${balance:,.2f}")
+    
+
     
 """
 def chatbot():

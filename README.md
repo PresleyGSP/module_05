@@ -24,3 +24,8 @@ Presley McFarlane-Goolcharan
 ## Code Modification [4]
 
 - Added unit testing for function "get_amount()".
+
+## Code Modification [5]
+
+- Added balance validation to "get_balance()" function.
+
