@@ -21,8 +21,9 @@ from src.chatbot import ACCOUNTS, VALID_TASKS
 from src.chatbot import get_account_number
 
 class TestReverseString(unittest.TestCase):
+    # Testing for non integer datatype
     def test_get_account_number_value_error_not_whole_number(self):
-        
+    
         with patch('builtins.input') as mock_input:
             # Arrange
             mock_input.side_effect = ["Presley"]
@@ -32,7 +33,7 @@ class TestReverseString(unittest.TestCase):
                 get_account_number()
 
             self.assertEqual(str(context.exception), expected)
-    
+    # Testing for account number not in ACCOUNTS
     def test_get_account_number_value_error_not_an_account_number(self):
 
         with patch('builtins.input') as mock_input:
@@ -44,7 +45,7 @@ class TestReverseString(unittest.TestCase):
                 get_account_number()
 
             self.assertEqual(str(context.exception), expected)
-    
+    # Testing for valid account number
     def test_get_account_number_is_valid(self):
 
         with patch('builtins.input') as mock_input:

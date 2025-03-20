@@ -33,10 +33,10 @@ def get_account_number() -> int:
         int: Returns the account the number.
     
     Raises:
-        ValueError: Raised if account number entered cannot be parsed into an integer.
+        TypeError: Raised if account number entered cannot be parsed into an integer.
         ValueError: Raised if the account number entered does not exist in the "ACCOUNTS" dictionary.
-
     """
+    
     acc_num = input("Please enter your account number: ")
     try: 
             acc_num = int(acc_num)
@@ -46,6 +46,30 @@ def get_account_number() -> int:
         raise ValueError("Account number entered does not exist.")
     
     return acc_num
+
+
+def get_amount() -> float:
+    """Prompts the user to input the amount to deposit and return the amount as float.
+    
+    Returns: 
+        float: Returns the amount to deposit.
+    
+    Raises:
+        ValueError: Raised if deposit amount entered cannot be parsed into an integer.
+        ValueError: Raised if deposit amount is 0 or a negative value.
+    """
+
+    dep_num = input("Enter an amount: ")
+    try:
+            dep_num = float(dep_num)
+    except ValueError:
+            raise ValueError("Amount must be a numeric type.")
+    if dep_num == 0:
+        raise ValueError("Amount must be a value greater than zero.")
+    elif dep_num < 0:
+        raise ValueError("Amount must be a value greater than zero.")
+    
+    return dep_num
     
 """
 def chatbot():
