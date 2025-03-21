@@ -36,3 +36,13 @@ Presley McFarlane-Goolcharan
 ## Code Modification 7
 
 - Added function "make_deposit()" that increases accounts balance by a specified amount.
+
+## Code Modification 8
+
+- Added unit testing for function "make_deposit()" function.
+
+## Code Modification 9
+
+- Added function "get_task()" that returns a valid task selected by the user.
+- Added unit testing for "get_task()" function.
+

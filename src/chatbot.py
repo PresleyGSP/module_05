@@ -72,7 +72,7 @@ def get_amount() -> float:
     return dep_num
 
 def get_balance(acc_num: int) -> str:
-    """Returns a message containing the balance of the specified account number
+    """Returns a message containing the balance of the specified account number and returns the message as str.
     
     Returns
         str: " Your current balance for account {account-number} is {balance-formatted-as-currency}."
@@ -92,7 +92,7 @@ def get_balance(acc_num: int) -> str:
     return (f"Your current balance for account {acc_num} is ${balance:,.2f}")
 
 def make_deposit(acc_num: int, dep_num: int) -> str:
-    """Returns an increased bank accounts balance by a specified amount.
+    """Returns an increased bank accounts balance by a specified amount as str.
 
     Returns:
         str: "You have made a deposit of {account-balance-formatted as currency} to account {account-number}.
@@ -120,7 +120,23 @@ def make_deposit(acc_num: int, dep_num: int) -> str:
 
 
     return (f"You have made a deposit of ${dep_num:,.2f} to account {acc_num}.")
+
+def get_task() -> str:
+    """Prompts the user to input a task and returns the task as str.
+
+    Returns:
+        str: Returns the task entered by the user.
     
+    Raises:
+        ValueError: Raised if input is not in VALID_TASKS list.
+    """
+    task = input("What would you like to do (balance/deposit/exit)?: ")
+    task = task.lower()
+    if task in VALID_TASKS:
+        return task
+    else:
+        raise ValueError(f'"{task}" is an unknown task.')
+
 """
 def chatbot():
     Performs the Chatbot functionality.
