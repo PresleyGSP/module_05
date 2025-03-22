@@ -84,7 +84,7 @@ def get_balance(acc_num: int) -> str:
     try:
             acc_num = int(acc_num)
     except ValueError:
-          raise TypeError('Account number must be an int type.')
+            raise TypeError('Account number must be an int type.')
     if acc_num not in ACCOUNTS:
           raise ValueError('Account number does not exist.')
     balance = ACCOUNTS[acc_num]["balance"]
@@ -116,7 +116,7 @@ def make_deposit(acc_num: int, dep_num: int) -> str:
     elif dep_num == 0:
           raise ValueError('Amount must be a value greater than zero.')
     elif dep_num < 0:
-          raise ValueError('Amount must be greater than zero')
+          raise ValueError('Amount must be a value greater than zero.')
 
 
     return (f"You have made a deposit of ${dep_num:,.2f} to account {acc_num}.")
@@ -137,18 +137,49 @@ def get_task() -> str:
     else:
         raise ValueError(f'"{task}" is an unknown task.')
 
-"""
+
 def chatbot():
-    Performs the Chatbot functionality.
+    # Performs the Chatbot functionality.
     COMPANY_NAME = "PiXELL River Financial"
 
     # Print welcome message
     print(f"Welcome! I'm the {COMPANY_NAME} Chatbot! "
           f"Let's get chatting!")
+    while True:
+        try:
+                task = get_task()
+        except ValueError as e:
+                print(f"Error: {e}")
+                continue
+            
+        if task == "exit":
+            False
+        
+        try:
+                acc_num = get_account_number()
+        except (TypeError, ValueError) as e:
+                print(f"Error: {e}")
+                continue
+        
+        if task == "deposit":
+            try:
+                    amount = get_amount()
+                    message = make_deposit(acc_num, amount)
+                    print(message)
+            except ValueError as e:
+                    print(f"Error: {e}")
+                    continue
+        
+        try:
+                balance_message = get_balance(acc_num)
+                print(balance_message)
+        except (TypeError, ValueError) as e:
+                print(f"Error: {e}")
+                continue
+    
 
     # Print thank you message
     print(f"Thank you for banking with {COMPANY_NAME}.")
 
 if __name__ == "__main__":
     chatbot()
-"""

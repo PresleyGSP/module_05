@@ -179,7 +179,7 @@ class TestReverseString(unittest.TestCase):
         # Arrange
         acc_num = 123456
         dep_num = 0
-        expected = "Amount must be greater than zero."
+        expected = "Amount must be a value greater than zero."
         # Act and Assert
         with self.assertRaises(ValueError) as context:
             make_deposit(acc_num, dep_num)
@@ -190,7 +190,7 @@ class TestReverseString(unittest.TestCase):
         # Arrange
         acc_num = 123456
         dep_num = -1
-        expected = "Amount must be greater than zero."
+        expected = "Amount must be a value greater than zero."
         # Act and Assert
         with self.assertRaises(ValueError) as context:
             make_deposit(acc_num, dep_num)
@@ -201,7 +201,7 @@ class TestReverseString(unittest.TestCase):
         # Arrange
         acc_num = 123456
         dep_num = 1000
-        expected = "You have made a deposit of $1000.00 to account 123456."
+        expected = "You have made a deposit of $1,000.00 to account 123456."
         # Act
         actual = make_deposit(acc_num, dep_num)
         # Assert
@@ -212,7 +212,7 @@ class TestReverseString(unittest.TestCase):
         with patch('builtins.input') as mock_input:
             # Arrange
             mock_input.side_effect = ["Presley"]
-            expected = '"Presley" is an unknown task.'
+            expected = '"presley" is an unknown task.'
             # Act and Assert
             with self.assertRaises(ValueError) as context:
                 get_task()
@@ -232,7 +232,7 @@ class TestReverseString(unittest.TestCase):
     def test_get_task_selection_lowercase(self):
         with patch('builtins.input') as mock_input:
             # Arrange
-            mock_input = ["DEPOSIT"]
+            mock_input.side_effect = ["DEPOSIT"]
             expected = "deposit"
             # Act
             actual = get_task()
