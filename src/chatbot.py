@@ -146,34 +146,38 @@ def chatbot():
     print(f"Welcome! I'm the {COMPANY_NAME} Chatbot! "
           f"Let's get chatting!")
     while True:
+        # Menu Selection
         try:
                 task = get_task()
         except ValueError as e:
                 print(f"Error: {e}")
                 continue
-            
+        # Exit Task
         if task == "exit":
             break
-        
+        # Account number input
         try:
                 acc_num = get_account_number()
+        # get_account_number error message
         except (TypeError, ValueError) as e:
                 print(f"Error: {e}")
                 continue
-        
+        # Deposit Task
         if task == "deposit":
             try:
                     amount = get_amount()
                     message = make_deposit(acc_num, amount)
                     print(message)
+            # make_deposit() error message
             except ValueError as e:
                     print(f"Error: {e}")
                     continue
-        
+        # Balance Task
         elif task == "balance":
             try:
                 balance_message = get_balance(acc_num)
                 print(balance_message)
+            # get_balance() error message
             except (TypeError, ValueError) as e:
                 print(f"Error: {e}")
                 continue

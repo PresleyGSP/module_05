@@ -54,6 +54,10 @@ Presley McFarlane-Goolcharan
 
 - Fixed "chatbot()" function so "get_balance()" function was not called regardless of user input in "get_task()"
 
+## Code Modification 12
+
+- Added comments to "chatbot()" function. 
+
 ## Reflection
 
 ### 1. Identify any challenges or issues you encountered while writing your functions.
