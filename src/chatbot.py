@@ -153,7 +153,7 @@ def chatbot():
                 continue
             
         if task == "exit":
-            False
+            break
         
         try:
                 acc_num = get_account_number()
@@ -170,10 +170,11 @@ def chatbot():
                     print(f"Error: {e}")
                     continue
         
-        try:
+        elif task == "balance":
+            try:
                 balance_message = get_balance(acc_num)
                 print(balance_message)
-        except (TypeError, ValueError) as e:
+            except (TypeError, ValueError) as e:
                 print(f"Error: {e}")
                 continue
     
